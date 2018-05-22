@@ -516,6 +516,12 @@ fi
 
 test x$CONFIG_XENO_VALGRIND_API = xy && AC_DEFINE(CONFIG_XENO_VALGRIND_API,1,[config])
 
+dnl Create a variable needed for later substition 
+AC_CHECK_SIZEOF([void *])
+AC_SUBST(CMAKE_SIZEOF_VOID_P, $ac_cv_sizeof_void_p)
+
+AC_SUBST(CMAKE_VERSION_CODE, $version_code)
+
 dnl Check for obstack support in *libc
 AC_CHECK_HEADERS(obstack.h,libc_has_obstack=y)
 AM_CONDITIONAL(XENO_PRIVATE_OBSTACK,[test x$libc_has_obstack = x])
@@ -977,6 +983,8 @@ AC_CONFIG_FILES([ \
 	utils/Makefile \
 	utils/hdb/Makefile \
 	utils/can/Makefile \
+	utils/cmake/Makefile \
+	utils/cmake/xenomai-config-version.cmake \
 	utils/analogy/Makefile \
 	utils/ps/Makefile \
 	utils/slackspot/Makefile \
