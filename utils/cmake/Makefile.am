@@ -8,7 +8,7 @@ xenomai-config.cmake xenomai-macros.cmake \
 
 cmakeconfigdir = $(libdir)/cmake/$(PACKAGE)
 cmakeconfig_DATA = xenomai-config.cmake xenomai-macros.cmake xenomai-config-version.cmake \
-	xenomai-targets.cmake xenomai-targets-noconfig.cmake
+	xenomai-targets.cmake xenomai-targets-noconfig.cmake bootstrap-template.h
 
 CLEANFILES = build-stamp xenomai-config.cmake xenomai-config-version.cmake xenomai-macros.cmake \
-	xenomai-targets.cmake xenomai-targets-noconfig.cmake
+	xenomai-targets.cmake xenomai-targets-noconfig.cmake bootstrap-template.h
