@@ -516,12 +516,6 @@ fi
 
 test x$CONFIG_XENO_VALGRIND_API = xy && AC_DEFINE(CONFIG_XENO_VALGRIND_API,1,[config])
 
-dnl Create a variable needed for later substition 
-AC_CHECK_SIZEOF([void *])
-AC_SUBST(CMAKE_SIZEOF_VOID_P, $ac_cv_sizeof_void_p)
-
-AC_SUBST(CMAKE_VERSION_CODE, $version_code)
-
 dnl Check for obstack support in *libc
 AC_CHECK_HEADERS(obstack.h,libc_has_obstack=y)
 AM_CONDITIONAL(XENO_PRIVATE_OBSTACK,[test x$libc_has_obstack = x])
@@ -698,8 +692,7 @@ fi
 dnl Internal CFLAGS and LDFLAGS, may be enhanced per-arch below
 XENO_USER_CFLAGS="$XENO_USER_APP_CFLAGS -pipe -fstrict-aliasing \
 -Wall -Wstrict-prototypes -Wmissing-prototypes -Wno-long-long \
--Wno-unused-parameter -Wno-format-truncation -Werror -Wformat-security \
--D__XENO__ -D__IN_XENO__"
+-Wno-unused-parameter -Werror -Wformat-security -D__XENO__ -D__IN_XENO__"
 if test x$want_fortify = xyes -a x$debug_mode != xfull; then
    XENO_USER_CFLAGS="$XENO_USER_CFLAGS -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
 fi
@@ -1002,8 +995,6 @@ AC_CONFIG_FILES([ \
 	utils/Makefile \
 	utils/hdb/Makefile \
 	utils/can/Makefile \
-	utils/cmake/Makefile \
-	utils/cmake/xenomai-config-version.cmake \
 	utils/analogy/Makefile \
 	utils/ps/Makefile \
 	utils/slackspot/Makefile \
